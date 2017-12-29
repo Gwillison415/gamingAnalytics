@@ -5,6 +5,7 @@ import Chart from './chart';
 import ChartToolbar from './chartToolbar';
 const ChartContainer = ({props}) => {
   let { ...allPUPDprops} = props
+  console.log('props in chcontainer', props);
   return (
     <div className="well well-lg">
           <ChartToolbar></ChartToolbar>

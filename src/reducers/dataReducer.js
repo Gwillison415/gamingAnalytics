@@ -1,11 +1,8 @@
-// import {applyMiddleware } from 'redux';
-// import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
-// import { toggleProperty } from '../actions/index';
+import moment from 'moment';
 
 import {STAR_MESSAGE, PUPD_REQUEST_STARTED, PUPD_RECEIVED} from '../actions/dataActions'
 
-import {HANDLE_END_DATE_CHANGE, HANDLE_START_DATE_CHANGE, LOADING_DATE_CHANGE} from '../actions/toolbarActions'
+import {HANDLE_PUPD_END_DATE_CHANGE, HANDLE_PUPD_START_DATE_CHANGE, LOADING_DATE_CHANGE, UPDATE_START_DATE_DATA} from '../actions/toolbarActions'
 
 const ToolbarinitialState = {
   startValue: '08/01/2017',
@@ -43,17 +40,19 @@ function createReduxState(json, incomingState, dataType) {
   json.forEach(date => {
     if (!state[dataType].dateObj.date) {
 
-      state[dataType].dateArr.push(date.date)
-      state[dataType].dateObj[date.date] = {};
-      state[dataType].dateObj[date.date]['coinInPUPD'] = date.coinInPUPD;
-      state[dataType].dateObj[date.date]["handlePullsPUPD"] = date.handlePullsPUPD;
-      state[dataType].dateObj[date.date]["netWinPUPD"] = date.netWinPUPD;
-      state[dataType].dateObj[date.date]["actualHoldPercent"] = date.actualHoldPercent;
-      state[dataType].dateObj[date.date]["theoHoldPercent "] = date.theoHoldPercent;
-      state[dataType].dateObj[date.date]["machineDays"] = date.machineDays;
-      state[dataType].dateObj[date.date]["dateTicks"] = date.dateTicks;
+
+
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')] = {};
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]['coinInPUPD'] = date.coinInPUPD;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["handlePullsPUPD"] = date.handlePullsPUPD;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["netWinPUPD"] = date.netWinPUPD;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["actualHoldPercent"] = date.actualHoldPercent;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["theoHoldPercent "] = date.theoHoldPercent;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["machineDays"] = date.machineDays;
+      state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["dateTicks"] = date.dateTicks;
 
       //create data in O(n) time now to save time later
+      state[dataType].dateArr.push(moment(date.date).format('MM/DD/YYYY'))
       state[dataType]["coinInPUPDArray"].push(date.coinInPUPD);
       state[dataType]["handlePullsPUPDArray"].push(date.handlePullsPUPD);
       state[dataType]["netWinPUPDArray"].push(date.netWinPUPD);
@@ -75,20 +74,22 @@ export const DataReducer = (state = initialState, action) => {
 
     case PUPD_RECEIVED:
       return createReduxState(action.PUPD, state, 'pupd')
-    case HANDLE_END_DATE_CHANGE:
+    case HANDLE_PUPD_END_DATE_CHANGE:
       return {
         ...state,
         pupdDate : {endValue: action.value,
            endFormattedValue: action.formattedValue,
            loading: false}
          }
-    case HANDLE_START_DATE_CHANGE:
+    case HANDLE_PUPD_START_DATE_CHANGE:
       return {
         ...state,
         pupdDate: {startValue: action.value,
            startFormattedValue: action.formattedValue,
            loading: false}
          }
+    case UPDATE_START_DATE_DATA:
+        return createReduxState(action.PUPD, state, 'pupd')
     case LOADING_DATE_CHANGE:
       return {
         ...state,

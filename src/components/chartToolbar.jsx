@@ -20,11 +20,11 @@ export const ChartToolbar = ({entryCount}) => {
 
   return (<div className="row toolbar">
     <div className="row">
-      <div className="col-md-3 col-sm-2">
+      <div className="col-md-4 col-sm-2">
         <StartDatePickerComponent handleStartDateValueChange={handleStartDateValueChange} ></StartDatePickerComponent>
 
       </div>
-      <div className="col-md-3 col-sm-2">
+      <div className="col-md-4 col-sm-2">
         <EndDatePickerComponent handleEndDateValueChange={handleEndDateValueChange}></EndDatePickerComponent>
       </div>
       <div className="col-md-2">

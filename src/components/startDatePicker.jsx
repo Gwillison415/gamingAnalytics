@@ -5,18 +5,6 @@ import {bindActionCreators} from 'redux';
 import {FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
 import {handleStartDateValueChange} from '../actions/toolbarActions';
 export const StartDatePickerComponent = ({handleStartDateValueChange, dateValue}) => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     endValue: new Date().toISOString(),
-  //     startValue: new Date('05 October 2011 14:48 UTC').toISOString()
-  //   };
-  //   this.type = this.props.type
-  //   this.value = this.props.type === "End"
-  //     ? this.state.endValue
-  //     : this.state.startValue
-  //   this.handleChange = this.props.handleChange.bind(this)
-  // }
 
     return ( <FormGroup>
       <ControlLabel>
