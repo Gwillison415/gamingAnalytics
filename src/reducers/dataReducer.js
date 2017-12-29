@@ -26,10 +26,13 @@ const initialState = {
     dateTicksArray: [],
     isFetching: true,
     entryCount: 0,
-    endValue: '12/31/2017',
-    endFormattedValue: '',
-    startValue: '08/01/2017',
-    startFormattedValue: ''
+
+  },
+  pupdDate: {
+    endValue: '',
+    endFormattedValue: '12/31/2017',
+    startValue: '',
+    startFormattedValue: '08/01/2017'
   }
 }
 //return a new state.dailyDate object for the redux store
@@ -73,11 +76,23 @@ export const DataReducer = (state = initialState, action) => {
     case PUPD_RECEIVED:
       return createReduxState(action.PUPD, state, 'pupd')
     case HANDLE_END_DATE_CHANGE:
-      return {pupd : {endValue: action.value, endFormattedValue: action.formattedValue, loading: false}}
+      return {
+        ...state,
+        pupdDate : {endValue: action.value,
+           endFormattedValue: action.formattedValue,
+           loading: false}
+         }
     case HANDLE_START_DATE_CHANGE:
-      return {pupd: {startValue: action.value, startFormattedValue: action.formattedValue, loading: false}}
+      return {
+        ...state,
+        pupdDate: {startValue: action.value,
+           startFormattedValue: action.formattedValue,
+           loading: false}
+         }
     case LOADING_DATE_CHANGE:
-      return {loading: true}
+      return {
+        ...state,
+        loading: true}
     default:
 
       return {

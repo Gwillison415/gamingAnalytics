@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link, Route, Switch, withRouter} from 'react-router-dom'
-import DatePickerComponent from './datePicker';
+import StartDatePickerComponent from './startDatePicker';
+import EndDatePickerComponent from './endDatePicker';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
 export const ChartToolbar = ({entryCount}) => {
 
@@ -20,10 +21,11 @@ export const ChartToolbar = ({entryCount}) => {
   return (<div className="row toolbar">
     <div className="row">
       <div className="col-md-3 col-sm-2">
-        <DatePickerComponent handleChange={handleStartDateValueChange} type={'Start'}></DatePickerComponent>
+        <StartDatePickerComponent handleStartDateValueChange={handleStartDateValueChange} ></StartDatePickerComponent>
+
       </div>
       <div className="col-md-3 col-sm-2">
-        <DatePickerComponent handleChange={handleEndDateValueChange} type={'End'}></DatePickerComponent>
+        <EndDatePickerComponent handleEndDateValueChange={handleEndDateValueChange}></EndDatePickerComponent>
       </div>
       <div className="col-md-2">
         <p className="pull-right">

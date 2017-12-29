@@ -30,7 +30,7 @@ class App extends Component {
     );
   }
 }
-// probably need to map state.messages.messagesByID to the object i've created to enforce the contract I have established
+
 
 const mapStateToProps = state => {
   const isFetching = state.data.pupd.isFetching;
