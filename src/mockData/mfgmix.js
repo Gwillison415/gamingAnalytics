@@ -1,0 +1,135 @@
+const mfgmix ={
+  "result": [
+    {
+      "mfg": "AINS",
+      "coinIn": 116641582,
+      "handlePulls": 12630737,
+      "netWin": 6951711,
+      "theoWin": 7819608,
+      "machineDays": 1860,
+      "coinInPerc": "7.13",
+      "handlePullsPerc": "5.51",
+      "netWinPerc": "6.58",
+      "theoWinPerc": "6.86",
+      "machineDaysPerc": "3.17"
+    },
+    {
+      "mfg": "ARIST",
+      "coinIn": 199271528,
+      "handlePulls": 23849033,
+      "netWin": 14333066,
+      "theoWin": 14266587,
+      "machineDays": 4532,
+      "coinInPerc": "12.19",
+      "handlePullsPerc": "10.40",
+      "netWinPerc": "13.58",
+      "theoWinPerc": "12.52",
+      "machineDaysPerc": "7.72"
+    },
+    {
+      "mfg": "ATRON",
+      "coinIn": 43647368,
+      "handlePulls": 8639663,
+      "netWin": 2963557,
+      "theoWin": 3746031,
+      "machineDays": 2430,
+      "coinInPerc": "2.67",
+      "handlePullsPerc": "3.77",
+      "netWinPerc": "2.81",
+      "theoWinPerc": "3.29",
+      "machineDaysPerc": "4.14"
+    },
+    {
+      "mfg": "BALLY",
+      "coinIn": 242526652,
+      "handlePulls": 24020485,
+      "netWin": 11898628,
+      "theoWin": 16242535,
+      "machineDays": 6138,
+      "coinInPerc": "14.83",
+      "handlePullsPerc": "10.48",
+      "netWinPerc": "11.27",
+      "theoWinPerc": "14.25",
+      "machineDaysPerc": "10.46"
+    },
+    {
+      "mfg": "BCM",
+      "coinIn": 43149948,
+      "handlePulls": 607502,
+      "netWin": 1357995,
+      "theoWin": 1165069,
+      "machineDays": 744,
+      "coinInPerc": "2.64",
+      "handlePullsPerc": "0.27",
+      "netWinPerc": "1.29",
+      "theoWinPerc": "1.02",
+      "machineDaysPerc": "1.27"
+    },
+    {
+      "mfg": "IGT",
+      "coinIn": 636719730,
+      "handlePulls": 105634537,
+      "netWin": 44172879,
+      "theoWin": 45913872,
+      "machineDays": 29574,
+      "coinInPerc": "38.94",
+      "handlePullsPerc": "46.08",
+      "netWinPerc": "41.84",
+      "theoWinPerc": "40.29",
+      "machineDaysPerc": "50.41"
+    },
+    {
+      "mfg": "KONAM",
+      "coinIn": 88934516,
+      "handlePulls": 13326986,
+      "netWin": 5894417,
+      "theoWin": 6306735,
+      "machineDays": 2108,
+      "coinInPerc": "5.44",
+      "handlePullsPerc": "5.81",
+      "netWinPerc": "5.58",
+      "theoWinPerc": "5.53",
+      "machineDaysPerc": "3.59"
+    },
+    {
+      "mfg": "NOVO",
+      "coinIn": 68518882,
+      "handlePulls": 3003466,
+      "netWin": 1968514,
+      "theoWin": 3960155,
+      "machineDays": 1116,
+      "coinInPerc": "4.19",
+      "handlePullsPerc": "1.31",
+      "netWinPerc": "1.86",
+      "theoWinPerc": "3.47",
+      "machineDaysPerc": "1.90"
+    },
+    {
+      "mfg": "ORION",
+      "coinIn": 6384581,
+      "handlePulls": 1407426,
+      "netWin": 449082,
+      "theoWin": 573937,
+      "machineDays": 930,
+      "coinInPerc": "0.39",
+      "handlePullsPerc": "0.61",
+      "netWinPerc": "0.43",
+      "theoWinPerc": "0.50",
+      "machineDaysPerc": "1.59"
+    },
+    {
+      "mfg": "WMS",
+      "coinIn": 189512237,
+      "handlePulls": 36119358,
+      "netWin": 15580886,
+      "theoWin": 13973543,
+      "machineDays": 9238,
+      "coinInPerc": "11.59",
+      "handlePullsPerc": "15.76",
+      "netWinPerc": "14.76",
+      "theoWinPerc": "12.26",
+      "machineDaysPerc": "15.75"
+    }
+  ]
+}
+export default mfgmix;

@@ -1,0 +1,33 @@
+{
+  "name": "react-inbox",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "c3": "^0.4.10",
+    "classnames": "^2.2.5",
+    "d3": "^3.5.5",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "font-awesome": "^4.7.0",
+    "history": "^4.6.3",
+    "jquery": "^3.2.1",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.5",
+    "react-bootstrap-date-picker": "^5.1.0",
+    "react-dom": "^15.6.1",
+    "react-highcharts": "^15.0.0",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.10",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
