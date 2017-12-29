@@ -21,7 +21,7 @@ export const handleStartDateValueChange = (value, formattedValue) => {
       console.log(json, 'json');
       dispatch({
         type: UPDATE_START_DATE_DATA,
-        PUPD: json.result,
+        PUPD: json.result.reverse(),
       })
     }
     if (value > dateTicksArray[-1]) {

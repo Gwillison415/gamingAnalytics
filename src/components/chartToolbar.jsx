@@ -53,4 +53,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   handleStartDateValueChange,
 }, dispatch)
 
-export default withRouter(connect(mapStateToProps, null)(ChartToolbar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChartToolbar))

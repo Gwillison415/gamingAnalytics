@@ -33,7 +33,7 @@ const initialState = {
   }
 }
 //return a new state.dailyDate object for the redux store
-function createReduxState(json, incomingState, dataType) {
+function createReduxState(json, incomingState, dataType, isUpdate) {
 
   let state = incomingState;
   state[dataType].isFetching = false
@@ -52,6 +52,18 @@ function createReduxState(json, incomingState, dataType) {
       state[dataType].dateObj[moment(date.date).format('MM/DD/YYYY')]["dateTicks"] = date.dateTicks;
 
       //create data in O(n) time now to save time later
+    if (isUpdate) { // if isUpdate then we must reverse the JSON result array
+      // and push dates onto the front of the array so Highcharts can
+      // read correctlywhen we have a new start date
+      state[dataType].dateArr.unshift(moment(date.date).format('MM/DD/YYYY'))
+      state[dataType]["coinInPUPDArray"].unshift(date.coinInPUPD);
+      state[dataType]["handlePullsPUPDArray"].unshift(date.handlePullsPUPD);
+      state[dataType]["netWinPUPDArray"].unshift(date.netWinPUPD);
+      state[dataType]["actualHoldPercentArray"].unshift(date.actualHoldPercent);
+      state[dataType]["theoHoldPercentArray"].unshift(date.theoHoldPercent);
+      state[dataType]["machineDaysArray"].unshift(date.machineDays);
+      state[dataType]["dateTicksArray"].unshift(date.dateTicks);
+    } else {
       state[dataType].dateArr.push(moment(date.date).format('MM/DD/YYYY'))
       state[dataType]["coinInPUPDArray"].push(date.coinInPUPD);
       state[dataType]["handlePullsPUPDArray"].push(date.handlePullsPUPD);
@@ -61,11 +73,12 @@ function createReduxState(json, incomingState, dataType) {
       state[dataType]["machineDaysArray"].push(date.machineDays);
       state[dataType]["dateTicksArray"].push(date.dateTicks);
     }
+    }
   })
   state[dataType].entryCount = state[dataType].dateArr.length
   return {
     ...state
-  } // ES6 object destructuring to
+  } // ES6 object destructuring to prevent side effects and return immutable data
 }
 
 export const DataReducer = (state = initialState, action) => {
@@ -73,7 +86,7 @@ export const DataReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case PUPD_RECEIVED:
-      return createReduxState(action.PUPD, state, 'pupd')
+      return createReduxState(action.PUPD, state, 'pupd', false) // false for initial call
     case HANDLE_PUPD_END_DATE_CHANGE:
       return {
         ...state,
@@ -89,7 +102,7 @@ export const DataReducer = (state = initialState, action) => {
            loading: false}
          }
     case UPDATE_START_DATE_DATA:
-        return createReduxState(action.PUPD, state, 'pupd')
+        return createReduxState(action.PUPD, state, 'pupd', true)
     case LOADING_DATE_CHANGE:
       return {
         ...state,
