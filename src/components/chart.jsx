@@ -4,23 +4,12 @@ import {connect} from 'react-redux';
 import history from '../index';
 import ReactHighcharts from 'react-highcharts'; // Expects that Highcharts was loaded in the code.
 
-const Chart = ({dateObj, dateArr}) => {
+const Chart = ({ title, dateArr, coinInPUPDArray, handlePullsPUPDArray, netWinPUPDArray, actualHoldPercentArray, theoHoldPercentArray, machineDaysArray}) => {
+  // let {dateArr, coinInPUPDArray} = allPUPDprops;
+  console.log(coinInPUPDArray, 'coinInPUPDArray');
   const config = {
     xAxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ]
+      categories: dateArr,
     },
     chart: {
       backgroundColor: {
@@ -37,16 +26,33 @@ const Chart = ({dateObj, dateArr}) => {
     },
 
     title: {
-      text: 'Fruit Consumption'
+      text: title
     },
-    series: [
+    series:  [
       {
-        name: 'Jane',
-        data: [1, 0, 4]
+        name: 'machineDays',
+        data: machineDaysArray
       }, {
-        name: 'John',
-        data: [5, 7, 3]
-      }
+        name: 'theoHoldPercent',
+        data: theoHoldPercentArray
+      },
+      {
+        name: 'actualHoldPercent',
+        data: actualHoldPercentArray
+      },
+      {
+        name: 'netWinPUPD',
+        data: netWinPUPDArray
+      },
+      {
+        name: 'coinInPUPD',
+        data: coinInPUPDArray
+      },
+      {
+        name: 'handlePullsPUPD',
+        data: handlePullsPUPDArray
+      },
+
     ]
   };
   return (<div>

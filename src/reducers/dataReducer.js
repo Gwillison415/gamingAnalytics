@@ -18,6 +18,13 @@ import {
 const initialState = {
   pupd :{dateObj: {},
   dateArr: [],
+  coinInPUPDArray : [],
+  handlePullsPUPDArray: [],
+  netWinPUPDArray: [],
+  actualHoldPercentArray: [],
+  theoHoldPercentArray: [],
+  machineDaysArray: [],
+  dateTicksArray: [],
   isFetching: true,
   entryCount : 0},
 }
@@ -38,6 +45,15 @@ function createReduxState(json, incomingState, dataType) {
       state[dataType].dateObj[date.date]["theoHoldPercent "] = date.theoHoldPercent;
       state[dataType].dateObj[date.date]["machineDays"] = date.machineDays;
       state[dataType].dateObj[date.date]["dateTicks"] = date.dateTicks;
+
+      //create data in O(n) time now to save time later
+      state[dataType]["coinInPUPDArray"].push(date.coinInPUPD);
+      state[dataType]["handlePullsPUPDArray"].push(date.handlePullsPUPD);
+      state[dataType]["netWinPUPDArray"].push(date.netWinPUPD);
+      state[dataType]["actualHoldPercentArray"].push(date.actualHoldPercent);
+      state[dataType]["theoHoldPercentArray"].push(date.theoHoldPercent);
+      state[dataType]["machineDaysArray"].push(date.machineDays);
+      state[dataType]["dateTicksArray"].push(date.dateTicks);
     }
   })
   state[dataType].entryCount  = state[dataType].dateArr.length
@@ -49,7 +65,7 @@ function createReduxState(json, incomingState, dataType) {
 export const DataReducer = (state = initialState, action) => {
   // console.log(state, "looking for initialState");
   switch (action.type) {
-  
+
     case PUPD_RECEIVED:
       return createReduxState(action.PUPD, state, 'pupd')
 

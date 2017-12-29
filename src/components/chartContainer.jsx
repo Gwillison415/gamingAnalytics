@@ -3,21 +3,22 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Chart from './chart';
 import ChartToolbar from './chartToolbar';
-const ChartContainer = ({dateArr, dateObj}) => {
+const ChartContainer = ({props}) => {
+  let { ...allPUPDprops} = props
   return (
     <div className="well well-lg">
           <ChartToolbar></ChartToolbar>
-      <Chart dateArr={dateArr}/>
+          <Chart  title={'Per Unit Per Day'} {...allPUPDprops}/>
     </div>
   )
 }
-
+// dateArr={dateArr}
 
 const mapStateToProps = state => {
   const isFetching = state.data.pupd.isFetching;
-  const dateObj = state.data.pupd.dateObj;
+  const props = state.data.pupd;
   const dateArr = state.data.pupd.dateArr;
-  return {isFetching, dateArr, dateObj}
+  return {isFetching, dateArr, props}
 
 }
 

@@ -16,7 +16,6 @@ class App extends Component {
    componentDidMount(){
   //  console.log(this.props.getAllPUPD.toString());
     this.props.getAllPUPDMock();
-console.log(this.props.isFetching);
   }
 
   render() {
