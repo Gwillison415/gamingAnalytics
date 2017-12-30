@@ -8,6 +8,7 @@ import {
   getAllPUPD,
   getAllPUPDMock,
 } from '../actions/dataActions.js';
+import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
 import ChartContainer from './chartContainer';
 
 
@@ -15,8 +16,8 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.pupdProps = this.props.pupdProps
-
+    this.pupdProps = this.props.pupdProps;
+    // this.dateArr = this.props.dateArr
   }
    componentDidMount(){
   //  console.log(this.props.getAllPUPD.toString());
@@ -45,13 +46,15 @@ class App extends Component {
 const mapStateToProps = state => {
   const isFetching = state.data.pupd.isFetching;
   const pupdProps = state.data.pupd;
+  // const dateArr = state.data.pupd.dateArr;
   return {isFetching, pupdProps}
 
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getAllPUPD,
-  getAllPUPDMock
+  getAllPUPDMock,
+  handleStartDateValueChange
 }, dispatch)
 
 export default withRouter(connect(

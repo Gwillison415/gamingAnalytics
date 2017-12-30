@@ -41,16 +41,16 @@ import EndDatePickerComponent from './endDatePicker';
   </div>);
 
 }
-export default ChartToolbar
+// export default ChartToolbar
 
-// const mapStateToProps = state => {
-//   let entryCount = state.data.pupd.entryCount;
-//
-//   return {entryCount}
-// }
-// // const mapDispatchToProps = dispatch => bindActionCreators({
-// //   handleEndDateValueChange,
-// //   handleStartDateValueChange,
-// // }, dispatch)
-//
-// export default connect(mapStateToProps, null)(ChartToolbar)
+const mapStateToProps = state => {
+  let entryCount = state.data.pupd.entryCount;
+
+  return {entryCount}
+}
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   handleEndDateValueChange,
+//   handleStartDateValueChange,
+// }, dispatch)
+
+export default connect(mapStateToProps, null)(ChartToolbar)

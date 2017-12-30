@@ -14,7 +14,7 @@ const Chart = ({
   theoHoldPercentArray,
   machineDaysArray
 }) => {
-console.log('dateArr[-1]', dateArr);
+
   const config = {
     xAxis: {
       categories: dateArr
@@ -71,6 +71,8 @@ console.log('dateArr[-1]', dateArr);
 
   </div>)
 }
+
+// highly improbable attempt to pull 
 // const mapStateToProps = state => {
 //   const isFetching = state.data.pupd.isFetching;
 //   const pupdProps = state.data.pupd;
@@ -95,12 +97,8 @@ console.log('dateArr[-1]', dateArr);
 //   }
 //
 // }
-
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   getAllPUPD,
-//   getAllPUPDMock
-// }, dispatch)
-
+//
+//
 // export default connect(mapStateToProps, null)(Chart);
 
 export default Chart;

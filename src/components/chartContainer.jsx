@@ -4,40 +4,40 @@ import {connect} from 'react-redux';
 import Chart from './chart';
 import ChartToolbar from './chartToolbar';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
-class ChartContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.pupdProps = this.props.pupdProps
-    this.dateArr = this.props.dateArr
-  }
+// class ChartContainer extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.pupdProps = this.props.pupdProps
+//     this.dateArr = this.props.dateArr
+//   }
 
-
+const ChartContainer = ({dateArr,netWinPUPDArray, handlePullsPUPDArray,  coinInPUPDArray,actualHoldPercentArray,theoHoldPercentArray, machineDaysArray }) => {
 
   //  console.log('pupdProps in chcontainer', pupdProps);
 
-  render() {
-    console.log('chart props', this.pupdProps);
+
     return (<div className="well well-lg">
-      <ChartToolbar handleStartDateValueChange={this.props.handleStartDateValueChange} handleEndDateValueChange={this.props.handleEndDateValueChange}>
+      <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}>
 
       </ChartToolbar>
-      <Chart title={'Per Unit Per Day'} dateArr={this.dateArr} { ...this.pupdProps}/>
+      <Chart title={'Per Unit Per Day'}
+         dateArr={dateArr}  netWinPUPDArray={netWinPUPDArray} handlePullsPUPDArray={handlePullsPUPDArray}  coinInPUPDArray={coinInPUPDArray}  actualHoldPercentArray={actualHoldPercentArray}  theoHoldPercentArray={theoHoldPercentArray} machineDaysArray={machineDaysArray}/>
     </div>)
-  }
+
 }
 // dateArr={dateArr}
-const  mapStateToProps = state => {
-  const isFetching = state.data.pupd.isFetching;
-  const pupdProps = state.data.pupd;
-  const dateArr = state.data.pupd.dateArr;
-  return {isFetching, dateArr, pupdProps,}
-
-}
-
-const mapDispatchToProps = dispatch => bindActionCreators({
-  handleStartDateValueChange,
-  handleEndDateValueChange
-}, dispatch)
-
-export default connect(mapStateToProps, null)(ChartContainer);
-// export default ChartContainer;
+// const  mapStateToProps = state => {
+//   const isFetching = state.data.pupd.isFetching;
+//
+//   const dateArr = state.data.pupd.dateArr;
+//   return {isFetching}
+//
+// }
+//
+// const mapDispatchToProps = dispatch => bindActionCreators({
+//   handleStartDateValueChange,
+//   handleEndDateValueChange
+// }, dispatch)
+//
+// export default connect(mapStateToProps, null)(ChartContainer);
+export default ChartContainer;
