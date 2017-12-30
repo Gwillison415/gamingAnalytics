@@ -12,7 +12,7 @@ export const getAllPUPD = () => {
   // console.log('before dispatch');
   return async (dispatch) => {
     dispatch({ type: PUPD_REQUEST_STARTED })
-    const response = await makeAPIrequest("pupd", "017/11/04", "017/12/04");
+    const response = await makeAPIrequest("pupd", "2017/11/04", "2017/12/04");
     // console.log('typeof response', response);
     const json = await response.json()
     dispatch({
@@ -21,7 +21,7 @@ export const getAllPUPD = () => {
     })
   }
 }
-
+// mock data call to limit api usage in dev
 export const getAllPUPDMock = () => {
   // console.log('before dispatch');
   return async (dispatch) => {
@@ -33,21 +33,37 @@ export const getAllPUPDMock = () => {
     })
   }
 }
-export const getAllAregateMock = () => {
+// mock data call to limit api usage in dev
+export const getAllAGGRMock = () => {
   // console.log('before dispatch');
   return async (dispatch) => {
     dispatch({ type: AGGR_REQUEST_STARTED })
-    const json = await pupd
+    const json = await aggr;
     dispatch({
       type: AGGR_RECEIVED,
-      PUPD: json.result,
+      PUPD: json.result.reverse(),
     })
   }
 }
+
+export const getAllAGGR = () => {
+  // console.log('before dispatch');
+  return async (dispatch) => {
+    dispatch({ type: AGGR_REQUEST_STARTED })
+    const response = await makeAPIrequest("aggr", "2017/11/04", "2017/12/04");
+    // console.log('typeof response', response);
+    const json = await response.json()
+    dispatch({
+      type: AGGR_RECEIVED,
+      PUPD: json.result.reverse(),
+    })
+  }
+}
+
 const makeAPIrequest = async (queryType, startDate, endDate, method = 'GET', body = null) => {
   const BASE_URL =  'https://hiring.testgaai.com/ask/floor/';
   if (body) {body = JSON.stringify(body)}
-  console.log(BASE_URL + queryType + `?from=${startDate}&to=${endDate}`,'querystring');
+  console.log('querystring created for api call --> ', BASE_URL + queryType + `?from=${startDate}&to=${endDate}`);
   return  await fetch(BASE_URL + queryType + `?from=${startDate}&to=${endDate}`, {
     method: method,
     headers: {
