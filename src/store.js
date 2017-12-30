@@ -1,21 +1,9 @@
 
-import { conmbineReducers, createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 // import rootReducer from './reducers'
 import {rootReducer} from './reducers/index'
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-
-
-const error = (store) => (next) => action => {
-  try {
-    next(action);
-  } catch(err) {
-    console.log('Error MESSAGE:', err);
-  }
-  next(action);
-}
-
 
 const middleware = [
   thunk,

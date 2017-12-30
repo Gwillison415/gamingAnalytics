@@ -290,26 +290,7 @@ const pupd ={
       "machineDays": 1894,
       "dateTicks": 1512172800000
     },
-    {
-      "date": "2017/12/03",
-      "coinInPUPD": 33724,
-      "handlePullsPUPD": 5185,
-      "netWinPUPD": 2314,
-      "actualHoldPercent": 0.08,
-      "theoHoldPercent": 0.08,
-      "machineDays": 1894,
-      "dateTicks": 1512259200000
-    },
-    {
-      "date": "2017/12/04",
-      "coinInPUPD": 22900,
-      "handlePullsPUPD": 2945,
-      "netWinPUPD": 1431,
-      "actualHoldPercent": 0.09,
-      "theoHoldPercent": 0.08,
-      "machineDays": 1894,
-      "dateTicks": 1512345600000
-    }
+    
   ]
 }
 export default pupd;
