@@ -102,7 +102,7 @@ export const DataReducer = (state = initialState, action) => {
            loading: false}
          }
     case UPDATE_START_DATE_DATA:
-        return createReduxState(action.PUPD, state, 'pupd', true)
+        return Object.assign({}, createReduxState(action.PUPD, state, 'pupd', true))
     case LOADING_DATE_CHANGE:
       return {
         ...state,

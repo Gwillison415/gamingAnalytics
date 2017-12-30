@@ -10,7 +10,7 @@ export const StartDatePickerComponent = ({handleStartDateValueChange, dateValue}
       <ControlLabel>
         Start Date
       </ControlLabel>
-      <DatePicker id="universal-datepicker" value={dateValue} onChange={handleStartDateValueChange}/>
+      <DatePicker id="universal-datepicker" value={dateValue} onChange={($1, $2) => {handleStartDateValueChange($1, $2)}}/>
     </FormGroup> );
 
 };

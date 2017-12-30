@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Link, Route, Switch, withRouter} from 'react-router-dom'
 import StartDatePickerComponent from './startDatePicker';
 import EndDatePickerComponent from './endDatePicker';
-import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
-export const ChartToolbar = ({entryCount}) => {
+
+ const ChartToolbar = ({entryCount, handleStartDateValueChange, handleEndDateValueChange}) => {
 
   // const handleChange = (value, formattedValue) => {
   //   console.log('handleChange happened');
@@ -42,15 +41,16 @@ export const ChartToolbar = ({entryCount}) => {
   </div>);
 
 }
+export default ChartToolbar
 
-const mapStateToProps = state => {
-  let entryCount = state.data.pupd.entryCount;
-
-  return {entryCount}
-}
-const mapDispatchToProps = dispatch => bindActionCreators({
-  handleEndDateValueChange,
-  handleStartDateValueChange,
-}, dispatch)
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChartToolbar))
+// const mapStateToProps = state => {
+//   let entryCount = state.data.pupd.entryCount;
+//
+//   return {entryCount}
+// }
+// // const mapDispatchToProps = dispatch => bindActionCreators({
+// //   handleEndDateValueChange,
+// //   handleStartDateValueChange,
+// // }, dispatch)
+//
+// export default connect(mapStateToProps, null)(ChartToolbar)

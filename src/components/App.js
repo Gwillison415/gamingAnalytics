@@ -13,18 +13,28 @@ import ChartContainer from './chartContainer';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.pupdProps = this.props.pupdProps
+
+  }
    componentDidMount(){
   //  console.log(this.props.getAllPUPD.toString());
     this.props.getAllPUPDMock();
   }
+  componentWillReceiveProps(nextprops) {
+    // this.handleStartDateValueChange
+    console.log('inside componentWillReceiveProps', nextprops);
+  }
 
   render() {
+
     if (this.props.isFetching === true ) {
       return <div>Loading</div>
     }
     return (
       // <div>
-        <ChartContainer/>
+        <ChartContainer { ...this.pupdProps}/>
       // </div>
 
     );
@@ -34,7 +44,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const isFetching = state.data.pupd.isFetching;
-  return {isFetching}
+  const pupdProps = state.data.pupd;
+  return {isFetching, pupdProps}
 
 }
 
