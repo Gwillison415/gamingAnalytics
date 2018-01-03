@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+
 import StartDatePickerComponent from './startDatePicker';
 import EndDatePickerComponent from './endDatePicker';
 
@@ -43,14 +43,10 @@ import EndDatePickerComponent from './endDatePicker';
 }
 // export default ChartToolbar
 
-const mapStateToProps = state => {
-  let entryCount = state.data.pupd.entryCount;
 
-  return {entryCount}
-}
 // const mapDispatchToProps = dispatch => bindActionCreators({
 //   handleEndDateValueChange,
 //   handleStartDateValueChange,
 // }, dispatch)
 
-export default connect(mapStateToProps, null)(ChartToolbar)
+export default ChartToolbar;

@@ -1,16 +1,12 @@
 import React from 'react';
 import Chart from './chart';
+import {connect} from 'react-redux';
 import ChartToolbar from './chartToolbar';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
-// class PUPDChartContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.pupdProps = this.props.pupdProps
-//     this.dateArr = this.props.dateArr
-//   }
 
 const PUPDChartContainer = ({
   title,
+  entryCount,
   dateArr,
   netWinPUPDArray,
   handlePullsPUPDArray,
@@ -20,7 +16,6 @@ const PUPDChartContainer = ({
   machineDaysArray
 }) => {
 
-  //  console.log('pupdProps in chcontainer', pupdProps);
   const config = {
     xAxis: {
       categories: dateArr
@@ -72,25 +67,15 @@ const PUPDChartContainer = ({
   };
 
   return (<div className="well well-lg">
-    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}></ChartToolbar>
-    <Chart config={config}/>
+    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange} entryCount={entryCount}></ChartToolbar>
+    <Chart name={'pupd'} config={config}/>
   </div>)
 
 }
 
-// dateArr={dateArr}
-// const  mapStateToProps = state => {
-//   const isFetching = state.data.pupd.isFetching;
-//
-//   const dateArr = state.data.pupd.dateArr;
-//   return {isFetching}
-//
-// }
-//
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   handleStartDateValueChange,
-//   handleEndDateValueChange
-// }, dispatch)
-//
-// export default connect(mapStateToProps, null)(PUPDChartContainer);
-export default PUPDChartContainer;
+const mapStateToProps = state => {
+  let entryCount = state.data.pupd.entryCount;
+
+  return {entryCount}
+}
+export default connect(mapStateToProps, null)(PUPDChartContainer);

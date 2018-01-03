@@ -2,16 +2,14 @@ import React from 'react';
 import ReactHighcharts from 'react-highcharts'; // Expects that Highcharts was loaded in the code.
 
 const Chart = ({
-  title,
-  config
+  number,
+  config,name
 
 }) => {
-
+// domProps={{  id: {number}}}
 
   return (<div>
-    <ReactHighcharts config={config} domProps={{
-        id: {title}
-      }}></ReactHighcharts>
+    <ReactHighcharts config={config} ></ReactHighcharts>
 
   </div>)
 }
