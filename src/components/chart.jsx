@@ -7,7 +7,7 @@ const Chart = ({
 
 }) => {
 // domProps={{  id: {number}}}
-console.log(name, ' config', config);
+
   return (<div>
     <ReactHighcharts config={config} ></ReactHighcharts>
 

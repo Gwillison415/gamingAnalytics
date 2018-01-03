@@ -1,10 +1,12 @@
 import React from 'react';
 import Chart from './chart';
+import {connect} from 'react-redux';
 import ChartToolbar from './chartToolbar';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
 
 const PUPDChartContainer = ({
   title,
+  entryCount,
   dateArr,
   netWinPUPDArray,
   handlePullsPUPDArray,
@@ -14,7 +16,6 @@ const PUPDChartContainer = ({
   machineDaysArray
 }) => {
 
-  console.log('pupdProps in chcontainer', dateArr, netWinPUPDArray);
   const config = {
     xAxis: {
       categories: dateArr
@@ -66,10 +67,15 @@ const PUPDChartContainer = ({
   };
 
   return (<div className="well well-lg">
-    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}></ChartToolbar>
+    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange} entryCount={entryCount}></ChartToolbar>
     <Chart name={'pupd'} config={config}/>
   </div>)
 
 }
 
-export default PUPDChartContainer;
+const mapStateToProps = state => {
+  let entryCount = state.data.pupd.entryCount;
+
+  return {entryCount}
+}
+export default connect(mapStateToProps, null)(PUPDChartContainer);

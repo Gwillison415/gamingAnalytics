@@ -6,7 +6,7 @@ import {getAllPUPD, getAllPUPDMock, getAllAGGR, getAllAGGRMock, getAllMFGMIX, ge
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
 import PUPDChartContainer from './PUPDChartContainer';
 import AGGRChartContainer from './AGGRChartContainer';
-import MFMIXChartContainer from './MFMIXChartContainer';
+import {MFMIXChartContainer} from './MFMIXChartContainer';
 
 class App extends Component {
 

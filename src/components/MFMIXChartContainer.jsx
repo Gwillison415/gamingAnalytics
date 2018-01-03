@@ -1,10 +1,12 @@
 import React from 'react';
 import Chart from './chart';
 import ChartToolbar from './chartToolbar';
+import {connect} from 'react-redux';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
 
-const MFMIXChartContainer = ({
+export const MFMIXChartContainer = ({
   title,
+  entryCount,
   brandArr,
   coinInArray,
   handlePullsArray,
@@ -17,17 +19,16 @@ const MFMIXChartContainer = ({
   theoWinPercArray,
   machineDaysPercArray
 }) => {
-
+console.log('entryCount', entryCount);
   console.log('MFGProps in chcontainer', brandArr, coinInArray,
   handlePullsArray,
-  netWinArray,
-  theoWinArray,
-  machineDaysArray,
-  coinInPercArray,
-  handlePullsPercArray,
-  netWinPercArray,
-  theoWinPercArray,
-  machineDaysPercArray);
+  );
+  let hpArr = handlePullsArray.map(value => {
+    console.log('value', value );
+    return value})
+
+
+console.log(typeof hpArr, 'mapfn');
   const config = {
     xAxis: {
       categories: brandArr
@@ -94,10 +95,15 @@ const MFMIXChartContainer = ({
   };
 
   return (<div className="well well-lg">
-    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}></ChartToolbar>
+    <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange} entryCount={entryCount}></ChartToolbar>
     <Chart name={'mfg'} config={config}/>
   </div>)
 
 }
+const mapStateToProps = state => {
+  const entryCount = state.data.mfgmix.entryCount;
+  return { entryCount}
+}
+export default connect(mapStateToProps, null)(MFMIXChartContainer);
 
-export default MFMIXChartContainer;
+// export default MFMIXChartContainer;
