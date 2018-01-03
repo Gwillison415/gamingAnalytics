@@ -6,7 +6,8 @@ export const PUPD_REQUEST_STARTED = "PUPD_REQUEST_STARTED";
 export const PUPD_RECEIVED = 'PUPD_RECEIVED';
 export const AGGR_REQUEST_STARTED = "AGGR_REQUEST_STARTED";
 export const AGGR_RECEIVED = "AGGR_RECEIVED";
-
+export const MFMX_REQUEST_STARTED = "MFMX_REQUEST_STARTED";
+export const MFMIX_RECEIVED = "MFMIX_RECEIVED";
 
 export const getAllPUPD = () => {
   // console.log('before dispatch');
@@ -17,37 +18,61 @@ export const getAllPUPD = () => {
     const json = await response.json()
     dispatch({
       type: PUPD_RECEIVED,
-      PUPD: json.result,
+      data: json.result,
+    })
+  }
+}
+
+export const getAllMFGMIX = () => {
+  // console.log('before dispatch');
+  return async (dispatch) => {
+    dispatch({ type: MFMX_REQUEST_STARTED })
+    const response = await makeAPIrequest("mfgmix", "2017/11/04", "2017/12/04");
+    const json = await response.json()
+    dispatch({
+      type: MFMIX_RECEIVED,
+      data: json.result,
+    })
+  }
+}
+export const getAllMFGMIXMock = () => {
+  // console.log('before dispatch');
+  return async (dispatch) => {
+    dispatch({ type: MFMX_REQUEST_STARTED })
+
+    const json = await mfgmix;
+    dispatch({
+      type: MFMIX_RECEIVED,
+      data: json.result,
     })
   }
 }
 // mock data call to limit api usage in dev
 export const getAllPUPDMock = () => {
-  // console.log('before dispatch');
   return async (dispatch) => {
     dispatch({ type: PUPD_REQUEST_STARTED })
     const json = await pupd
     dispatch({
       type: PUPD_RECEIVED,
-      PUPD: json.result,
+      data: json.result,
     })
   }
 }
 // mock data call to limit api usage in dev
 export const getAllAGGRMock = () => {
-  // console.log('before dispatch');
+
   return async (dispatch) => {
     dispatch({ type: AGGR_REQUEST_STARTED })
     const json = await aggr;
     dispatch({
       type: AGGR_RECEIVED,
-      PUPD: json.result.reverse(),
+      data: json.result.reverse(),
     })
   }
 }
 
 export const getAllAGGR = () => {
-  // console.log('before dispatch');
+
   return async (dispatch) => {
     dispatch({ type: AGGR_REQUEST_STARTED })
     const response = await makeAPIrequest("aggr", "2017/11/04", "2017/12/04");
@@ -55,7 +80,7 @@ export const getAllAGGR = () => {
     const json = await response.json()
     dispatch({
       type: AGGR_RECEIVED,
-      PUPD: json.result.reverse(),
+      data: json.result.reverse(),
     })
   }
 }

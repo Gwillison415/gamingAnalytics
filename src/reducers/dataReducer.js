@@ -1,14 +1,16 @@
 import moment from 'moment';
 
-import {PUPD_REQUEST_STARTED, PUPD_RECEIVED, AGGR_RECEIVED, AGGR_REQUEST_STARTED} from '../actions/dataActions'
+import {
+  PUPD_REQUEST_STARTED,
+  PUPD_RECEIVED,
+  AGGR_RECEIVED,
+  AGGR_REQUEST_STARTED,
+  MFMX_REQUEST_STARTED,
+  MFMIX_RECEIVED
+} from '../actions/dataActions'
 
 import {HANDLE_PUPD_END_DATE_CHANGE, HANDLE_PUPD_START_DATE_CHANGE, LOADING_DATE_CHANGE, UPDATE_PUPD_START_DATE_DATA, NEW_START_DATE_CALL} from '../actions/toolbarActions'
 
-const ToolbarinitialState = {
-  startValue: '08/01/2017',
-  endValue: '12/31/2017',
-  loading: true
-}
 
 const initialState = {
   pupd: {
@@ -25,10 +27,10 @@ const initialState = {
     entryCount: 0
   },
   pupdDate: {
-    endValue: '2017-12-02T20:00:00.000Z',
-    endFormattedValue: '12/02/2017',
-    startValue: '',
-    startFormattedValue: '08/01/2017'
+    endValue: '2017-12-04T20:00:00.000Z',
+    endFormattedValue: '12/04/2017',
+    startValue: '2017-11-04T20:00:00.000Z',
+    startFormattedValue: '11/04/2017'
   },
   aggr: {
     dateObj: {},
@@ -42,6 +44,22 @@ const initialState = {
     theoWinArray: [],
     isFetching: true,
     entryCount: 0
+  },
+  mfgmix: {
+    dateObj: {},
+    brandArr: [],
+    coinInArray: [],
+    handlePullsArray: [],
+    netWinArray: [],
+    theoWinArray: [],
+    machineDaysArray: [],
+    coinInPercArray: [],
+    handlePullsPercArray: [],
+    netWinPercArray: [],
+    theoWinPercArray: [],
+    machineDaysPercArray: [],
+    isFetching: true,
+    entryCount: 0
   }
 }
 
@@ -50,9 +68,11 @@ export const DataReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case PUPD_RECEIVED:
-      return createPUPDorAGGRReduxState(action.PUPD, state, 'pupd', false) // false for initial call
+      return createPUPDorAGGRReduxState(action.data, state, 'pupd', false) // false for initial call
     case AGGR_RECEIVED:
-      return createPUPDorAGGRReduxState(action.PUPD, state, 'aggr', false)
+      return createPUPDorAGGRReduxState(action.data, state, 'aggr', false)
+    case MFMIX_RECEIVED:
+      return createMFGReduxState(action.data, state, 'mfgmix')
     case HANDLE_PUPD_END_DATE_CHANGE:
       return {
         ...state,
@@ -85,6 +105,23 @@ export const DataReducer = (state = initialState, action) => {
       return {
         ...state
       }
+  }
+}
+
+function createMFGReduxState(json, incomingState, dataType) {
+  let state = incomingState;
+  state[dataType].isFetching = false;
+  json.forEach(brand => {
+    state[dataType].brandArr.push(brand.mfg);
+    let keys = Object.keys(brand).slice(1)
+    keys.forEach(key => {
+      state[dataType][`${key}Array`].push(Number(brand[key]));
+    })
+
+  });
+  state[dataType].entryCount = state[dataType].brandArr.length;
+  return {
+    ...state
   }
 }
 //return a new state.dailyDate object for the redux store

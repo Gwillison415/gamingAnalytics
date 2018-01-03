@@ -2,12 +2,6 @@ import React from 'react';
 import Chart from './chart';
 import ChartToolbar from './chartToolbar';
 import {handleStartDateValueChange, handleEndDateValueChange} from '../actions/toolbarActions';
-// class PUPDChartContainer extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.pupdProps = this.props.pupdProps
-//     this.dateArr = this.props.dateArr
-//   }
 
 const PUPDChartContainer = ({
   title,
@@ -20,7 +14,7 @@ const PUPDChartContainer = ({
   machineDaysArray
 }) => {
 
-  //  console.log('pupdProps in chcontainer', pupdProps);
+  console.log('pupdProps in chcontainer', dateArr, netWinPUPDArray);
   const config = {
     xAxis: {
       categories: dateArr
