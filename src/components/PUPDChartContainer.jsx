@@ -67,24 +67,9 @@ const PUPDChartContainer = ({
 
   return (<div className="well well-lg">
     <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}></ChartToolbar>
-    <Chart config={config}/>
+    <Chart name={'pupd'} config={config}/>
   </div>)
 
 }
 
-// dateArr={dateArr}
-// const  mapStateToProps = state => {
-//   const isFetching = state.data.pupd.isFetching;
-//
-//   const dateArr = state.data.pupd.dateArr;
-//   return {isFetching}
-//
-// }
-//
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   handleStartDateValueChange,
-//   handleEndDateValueChange
-// }, dispatch)
-//
-// export default connect(mapStateToProps, null)(PUPDChartContainer);
 export default PUPDChartContainer;

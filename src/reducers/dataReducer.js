@@ -115,6 +115,7 @@ function createMFGReduxState(json, incomingState, dataType) {
     state[dataType].brandArr.push(brand.mfg);
     let keys = Object.keys(brand).slice(1)
     keys.forEach(key => {
+      console.log('brand[key]',  typeof brand[key],  Number(brand[key], 10));
       state[dataType][`${key}Array`].push(Number(brand[key]));
     })
 

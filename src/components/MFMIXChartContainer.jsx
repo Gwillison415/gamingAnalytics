@@ -15,7 +15,7 @@ const MFMIXChartContainer = ({
   handlePullsPercArray,
   netWinPercArray,
   theoWinPercArray,
-  machineDaysPercArray,
+  machineDaysPercArray
 }) => {
 
   console.log('MFGProps in chcontainer', brandArr, coinInArray,
@@ -57,11 +57,13 @@ const MFMIXChartContainer = ({
     series: [
       {
         name: 'coinIn',
-        data: coinInArray
-      }, {
+        data: [123, 412, 543, 523, 654, 234, 234, 234]
+      },
+      {
         name: 'handlePulls',
         data: handlePullsArray
-      }, {
+      },
+       {
         name: 'netWin',
         data: netWinArray
       }, {
@@ -70,28 +72,30 @@ const MFMIXChartContainer = ({
       }, {
         name: 'machineDays',
         data: machineDaysArray
-      }, {
-        name: 'coinInPerc',
-        data: coinInPercArray
-      }, {
-        name: 'handlePullsPerc',
-        data: handlePullsPercArray
-      }, {
-        name: 'netWinPerc',
-        data: netWinPercArray
-      }, {
-        name: 'theoWinPerc',
-        data: theoWinPercArray
-      }, {
-        name: 'machineDaysPerc',
-        data: machineDaysPercArray
-      }
+      },
+      // {
+      //   name: 'coinInPerc',
+      //   data: coinInPercArray
+      // },
+      // {
+      //   name: 'handlePullsPerc',
+      //   data: handlePullsPercArray
+      // }, {
+      //   name: 'netWinPerc',
+      //   data: netWinPercArray
+      // }, {
+      //   name: 'theoWinPerc',
+      //   data: theoWinPercArray
+      // }, {
+      //   name: 'machineDaysPerc',
+      //   data: machineDaysPercArray
+      // }
     ]
   };
 
   return (<div className="well well-lg">
     <ChartToolbar handleStartDateValueChange={handleStartDateValueChange} handleEndDateValueChange={handleEndDateValueChange}></ChartToolbar>
-    <Chart config={config}/>
+    <Chart name={'mfg'} config={config}/>
   </div>)
 
 }
